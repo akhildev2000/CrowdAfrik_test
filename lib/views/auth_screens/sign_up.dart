@@ -1,0 +1,123 @@
+import 'package:crowdafrik/components/const.dart';
+import 'package:crowdafrik/views/auth_screens/verify_phone_number.dart';
+import 'package:flutter/material.dart';
+
+class SignupScreen extends StatelessWidget {
+  const SignupScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 61, 60, 60),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                InkWell(
+                  onTap: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: const Icon(
+                    Icons.arrow_back,
+                    color: Colors.white,
+                  ),
+                ),
+                Container(
+                  padding: const EdgeInsets.only(left: 40),
+                  height: 200,
+                  width: 320,
+                  child: const Image(
+                    image: AssetImage('assets/crowdAfrikLogo.png'),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 20),
+            const Padding(
+              padding: EdgeInsets.all(20),
+              child: SizedBox(
+                width: 285,
+                child: TextWidget(
+                  text: "Create better together",
+                  size: 36,
+                  weight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.only(top: 100),
+              height: 450,
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(50),
+                  topRight: Radius.circular(50),
+                ),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(15),
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const SizedBox(height: 20),
+                      const TextWidget(
+                          text: "Sign Up",
+                          size: 25,
+                          weight: FontWeight.bold,
+                          color: Colors.black),
+                      const SizedBox(height: 20),
+                      const TextFormWidget(
+                        hinttext: 'Enter your full name',
+                      ),
+                      const SizedBox(height: 10),
+                      const TextFormWidget(
+                        hinttext: 'Enter your email id',
+                      ),
+                      const SizedBox(height: 10),
+                      const TextFormWidget(hinttext: 'Enter your phone number'),
+                      const SizedBox(height: 10),
+                      CustomButton(
+                          text: "Continue",
+                          color: Colors.white,
+                          size: 16,
+                          fontweigh: FontWeight.bold,
+                          fns: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => const VerifyPhoneNumber(),
+                              ),
+                            );
+                          }),
+                      const SizedBox(height: 10),
+                      const Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          TextWidget(
+                              text: "Already a member?",
+                              size: 13,
+                              weight: FontWeight.normal,
+                              color: Colors.black),
+                          TextWidget(
+                              text: "Sign In",
+                              size: 13,
+                              weight: FontWeight.w600,
+                              color: Colors.red)
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
